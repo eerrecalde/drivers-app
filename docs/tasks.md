@@ -8,7 +8,7 @@ Work through these in order, one task per chat. Keep the total implementation ti
 
 Requirements: [brief](/Users/emilianoerrecalde/Downloads/brief.md) and [API spec](/Users/emilianoerrecalde/Downloads/api.md). Read both before implementation. Credentials belong in an ignored `.env`; never commit them.
 
-Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`. Feature implementation has not started; setup time was not tracked.
+Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup time was not tracked.
 
 ## Tasks
 
@@ -16,7 +16,7 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`. Feature i
   - GitHub access verified; untouched starter committed.
 - [x] **2. Record agreed decisions** — `51a72bd`.
   - See [decisions.md](decisions.md). Formatting verified.
-- [ ] **3. Driver listing and pagination** — `feature/driver-listing`.
+- [x] **3. Driver listing and pagination** — `feature/driver-listing`.
   - Server-render `/drivers`; keep Basic-auth credentials server-only. Add `.env.example` with placeholders.
   - Use `?page=`, 10 drivers per page and ordinary pagination links. Handle empty results, invalid page input and driver-fetch errors.
   - Verify shared URLs, Back/Forward and pagination without JavaScript; add relevant unit tests.
@@ -37,6 +37,8 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`. Feature i
 
 ## Handoff notes
 
-Task 3 is in progress on `feature/driver-listing` (approximately 5 minutes). The list, pagination, server-only API authentication and unit tests are implemented. Format/lint, type checking, tests and build pass; a local mock verified shared URLs, Back/Forward, invalid/empty pages and navigation without JavaScript. Live API verification passed with credentials in `.env`: the list rendered, pagination and browser history worked, and direct URLs and pagination worked without JavaScript. The Svelte MCP server and its autofixer were unavailable in this session; run the autofixer when available before completing this task. Review, merge and push remain pending.
+Task 3 completed on `feature/driver-listing` (approximately 5 minutes of implementation, plus later verification and review). Format/lint, type checking, tests and build passed. The Svelte autofixer reported no issues or suggestions. Live API and local mock checks covered rendering, shared URLs, Back/Forward and pagination without JavaScript; invalid and empty pages, and driver-fetch failure and retry, were also checked. The list is intentionally unstyled and policy loading is next.
+
+Next: **task 4**, policy loading and retry.
 
 After each task, tick it off and replace these notes with checks/results, time spent and the next task or blocker. Use `git log` for commit references. Leave unfinished work unchecked when the timebox ends.
