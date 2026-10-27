@@ -15,12 +15,23 @@ export const actions: Actions = {
 				message: 'Please correct the errors below.'
 			});
 		}
+		const config = { baseUrl: API_BASE_URL, username: API_USERNAME, password: API_PASSWORD };
+		let validUrl = false;
 		try {
-			const response = await createDriver(
-				fetch,
-				{ baseUrl: API_BASE_URL, username: API_USERNAME, password: API_PASSWORD },
-				validation.data
-			);
+			validUrl = ['http:', 'https:'].includes(new URL(config.baseUrl).protocol);
+		} catch {
+			// Invalid or missing URL is reported below without printing its value.
+		}
+		if (!config.username || !config.password || !validUrl) {
+			console.error('Driver creation failed: API configuration is missing or invalid.');
+			return fail(500, {
+				values,
+				errors: {} as FieldErrors,
+				message: 'The driver could not be created. Please try again.'
+			});
+		}
+		try {
+			const response = await createDriver(fetch, config, validation.data);
 			if (response.ok) return { success: true };
 			if (response.status === 422 || response.status === 409) {
 				const body: unknown = await response.json().catch(() => null);
@@ -31,8 +42,9 @@ export const actions: Actions = {
 					message: message || 'The driver could not be created. Please check your details.'
 				});
 			}
+			console.error(`Driver creation failed: API responded with status ${response.status}.`);
 		} catch {
-			// Show the same actionable message for network and configuration errors.
+			console.error('Driver creation failed: the API request failed before receiving a response.');
 		}
 		return fail(500, {
 			values,
