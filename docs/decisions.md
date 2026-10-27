@@ -1,6 +1,6 @@
 # Decisions
 
-Plan only; implementation and verification are pending. Keep documentation brief.
+These are the decisions and trade-offs made for the implementation.
 
 ## Agreed
 
@@ -31,4 +31,4 @@ Use Vitest for validation boundaries, policy pagination/failures and action erro
 - **Accessibility:** Screen-reader, automated and deeper focus/announcement checks.
 - **Edge cases:** Leap-day birthdays, pagination after expiry, additional upstream failures and timeout/cancellation handling.
 - **Search:** Add URL-based search alongside pagination if useful; reset the page when the query changes.
-- **Visual polish:** Improve spacing and responsive layout after behaviour is verified.
+- **Visual polish:** Extend the minimal styling and check more devices and browsers.

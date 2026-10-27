@@ -1,0 +1,77 @@
+:root {
+	font-family: system-ui, sans-serif;
+	color: #1d2939;
+	background: #f6f8fa;
+	line-height: 1.5;
+}
+
+body {
+	max-width: 48rem;
+	margin: 0 auto;
+	padding: 2rem 1.25rem 4rem;
+}
+
+h1 {
+	line-height: 1.2;
+}
+
+a {
+	color: #1755a4;
+}
+
+button,
+input {
+	font: inherit;
+}
+
+button {
+	padding: 0.5rem 0.9rem;
+	cursor: pointer;
+}
+
+button:disabled {
+	cursor: wait;
+}
+
+:focus-visible {
+	outline: 3px solid #1755a4;
+	outline-offset: 2px;
+}
+
+form {
+	max-width: 30rem;
+	margin-top: 1.5rem;
+}
+
+form > div {
+	margin-bottom: 1rem;
+}
+
+label {
+	display: block;
+	font-weight: 600;
+}
+
+input {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid #667085;
+	border-radius: 0.25rem;
+}
+
+input[aria-invalid='true'] {
+	border-color: #b42318;
+}
+
+form p {
+	margin: 0.25rem 0 0;
+	color: #b42318;
+}
+
+nav {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin-top: 1.5rem;
+}

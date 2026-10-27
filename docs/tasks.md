@@ -33,10 +33,12 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
   - Associate labels/errors, preserve keyboard access and announce results. Retain values on failures, including 422/409.
   - On success, stay on the form, confirm creation and clear fields. “View drivers” loads fresh list data.
   - Add validation/action unit tests; manually verify success and failure with JavaScript enabled and disabled.
-- [ ] **6. Final documentation and minimal styling** — `docs/final-polish`.
+- [x] **6. Final documentation and minimal styling** — `docs/final-polish`.
   - Keep README brief: setup, commands, AI use and a decisions link. Update actual gaps and follow-up work.
   - Run format, lint, type, unit and build checks; manually verify the combined flows.
   - Spend at most 2–5 minutes on general styling if time remains. Capture the final UI for review.
+  - Format, lint, type checking, 11 unit tests and build passed. Browser checks with a simulated API covered policy failure/retry, pagination, validation, creation and fresh list data, including JavaScript-disabled submissions and conflict value retention. Desktop and mobile form layouts were inspected. Approximately 4 minutes.
+  - Remaining: screen-reader and broader accessibility checks, automated end-to-end coverage and the other follow-ups in decisions.md.
 
 ## Handoff notes
 
@@ -48,4 +50,4 @@ Task 5 follow-up: disabled browser validation popups so empty and malformed inpu
 
 Task 5 diagnostics follow-up: unexpected creation failures now log whether API configuration is invalid, the request failed before a response, or the API returned an unexpected status. Logs exclude configuration values, submitted data, response bodies and exception text. Unit tests cover the failure paths.
 
-Next: **task 6**, final documentation and minimal styling.
+All planned tasks are complete.

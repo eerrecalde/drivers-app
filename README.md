@@ -1,56 +1,17 @@
-# sv
+# Drivers
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A SvelteKit app for listing drivers and their policies and adding a driver.
 
-## Creating a project
+## Setup
 
-If you're seeing this, you've probably already done this step. Congrats!
+Install dependencies with `pnpm install`. Copy `.env.example` to `.env` and fill in the API base URL, username and password. Keep `.env` private. Run `pnpm dev` and open the local URL printed in the terminal; `/` redirects to `/drivers`.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Commands
 
-To recreate this project with the same configuration:
+- `pnpm dev` — development server
+- `pnpm lint` — formatting and lint checks
+- `pnpm check` — Svelte and TypeScript checks
+- `pnpm test` — unit tests
+- `pnpm build` and `pnpm preview` — production build and local preview
 
-```sh
-# recreate this project
-pnpm dlx sv@1.1.1 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" ai-tools="ide:other,opencode" --install pnpm .
-```
-
-## Adding features
-
-Add features to your project with `sv add`:
-
-```sh
-npx sv add
-```
-
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+See [decisions, interpretations and follow-up work](docs/decisions.md). AI assistance was used to plan, implement, review and verify the app; the resulting code and decisions should be reviewed and understood by the author.
