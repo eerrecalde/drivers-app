@@ -55,12 +55,14 @@
 			</li>
 		{/each}
 	</ul>
+
 	{#await data.policies then policies}
 		{#if policies.kind === 'error'}
 			<p role="alert">Policies could not be loaded. Please try again.</p>
 			<button onclick={retryPolicies}>Retry policies</button>
 		{/if}
 	{/await}
+
 	<nav aria-label="Driver pages">
 		{#if data.page > 1}
 			<a href="{resolve('/drivers')}?page={data.page - 1}">Previous</a>

@@ -19,7 +19,7 @@ These are the decisions and trade-offs made for the implementation.
 - **Dependencies:** Add only Zod. Keep existing formatting, linting and test tools.
 - **README:** Setup, commands, brief AI-use disclosure and a link here for decisions, interpretations and gaps.
 
-Task order, completion status and chat handoffs live in [tasks.md](tasks.md). Include relevant unit tests with each feature and stop at the timebox.
+Task order and completion status live in [tasks.md](tasks.md). Include relevant unit tests with each feature and stop at the timebox.
 
 ## Verification
 

@@ -12,9 +12,12 @@ export async function getPolicies(
 	driverIds: string[]
 ): Promise<Policy[]> {
 	if (driverIds.length === 0) return [];
+
 	const policies: Policy[] = [];
 	let page = 1;
 	let totalPages: number;
+
+	// Only report an empty result after every policy page has been fetched.
 	do {
 		const url = new URL(`${config.baseUrl.replace(/\/$/, '')}/policies`);
 		url.searchParams.set('driverId', driverIds.join(','));
@@ -25,11 +28,13 @@ export async function getPolicies(
 				Authorization: `Basic ${Buffer.from(`${config.username}:${config.password}`).toString('base64')}`
 			}
 		});
+
 		if (!response.ok) throw new Error('Policy request failed');
 		const result = (await response.json()) as { data: Policy[]; meta: { totalPages: number } };
 		policies.push(...result.data);
 		totalPages = result.meta.totalPages;
 		page++;
 	} while (page <= totalPages);
+
 	return policies;
 }

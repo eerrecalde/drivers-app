@@ -24,6 +24,7 @@ export async function getDrivers(
 ): Promise<DriverPage> {
 	if (!config.baseUrl || !config.username || !config.password)
 		throw new Error('Missing API configuration');
+
 	const url = new URL(`${config.baseUrl.replace(/\/$/, '')}/drivers`);
 	url.searchParams.set('page', String(page));
 	url.searchParams.set('limit', '10');
@@ -32,6 +33,7 @@ export async function getDrivers(
 			Authorization: `Basic ${Buffer.from(`${config.username}:${config.password}`).toString('base64')}`
 		}
 	});
+
 	if (!response.ok) throw new Error('Driver request failed');
 	return (await response.json()) as DriverPage;
 }

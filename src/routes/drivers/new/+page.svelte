@@ -48,6 +48,7 @@
 		/>
 		{#if form?.errors?.firstName}<p id="firstName-error">{form.errors.firstName.join(' ')}</p>{/if}
 	</div>
+
 	<div>
 		<label for="lastName">Last name</label>
 		<input
@@ -61,6 +62,7 @@
 		/>
 		{#if form?.errors?.lastName}<p id="lastName-error">{form.errors.lastName.join(' ')}</p>{/if}
 	</div>
+
 	<div>
 		<label for="email">Email</label>
 		<input
@@ -74,6 +76,7 @@
 		/>
 		{#if form?.errors?.email}<p id="email-error">{form.errors.email.join(' ')}</p>{/if}
 	</div>
+
 	<div>
 		<label for="dateOfBirth">Date of birth</label>
 		<input
@@ -89,6 +92,7 @@
 				{form.errors.dateOfBirth.join(' ')}
 			</p>{/if}
 	</div>
+
 	<div>
 		<label for="licenceNumber">Licence number</label>
 		<input
@@ -103,5 +107,6 @@
 				{form.errors.licenceNumber.join(' ')}
 			</p>{/if}
 	</div>
+
 	<button type="submit" disabled={pending}>{pending ? 'Creating…' : 'Add driver'}</button>
 </form>

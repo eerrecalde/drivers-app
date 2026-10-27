@@ -22,6 +22,7 @@ export function validate(values: Values, today = new Date()) {
 				born.getUTCDate() !== day
 			)
 				return false;
+
 			let age = today.getUTCFullYear() - year;
 			if (
 				today.getUTCMonth() + 1 < month ||
@@ -31,6 +32,7 @@ export function validate(values: Values, today = new Date()) {
 			return age >= 17 && age <= 100;
 		}, 'Driver must be between 17 and 100 years old')
 	);
+
 	const schema = z.object({
 		firstName: z.string().trim().min(1, 'Enter a first name').max(50, 'Use at most 50 characters'),
 		lastName: z.string().trim().min(1, 'Enter a last name').max(50, 'Use at most 50 characters'),
@@ -41,6 +43,7 @@ export function validate(values: Values, today = new Date()) {
 			.transform((value) => value.replace(/\s/g, '').toUpperCase())
 			.pipe(z.string().regex(/^[A-Z0-9]{16}$/, 'Enter 16 letters or digits'))
 	});
+
 	return schema.safeParse(values);
 }
 
@@ -51,6 +54,7 @@ export async function createDriver(
 ) {
 	if (!config.baseUrl || !config.username || !config.password)
 		throw new Error('Missing API configuration');
+
 	return fetcher(`${config.baseUrl.replace(/\/$/, '')}/drivers`, {
 		method: 'POST',
 		headers: {
@@ -71,10 +75,12 @@ export function apiErrors(body: unknown): { message?: string; errors: FieldError
 		})
 		.safeParse(body);
 	if (!parsed.success) return { errors: {} };
+
 	const errors: FieldErrors = {};
 	for (const field of fields) {
 		const messages = parsed.data.error.fields?.[field];
 		if (messages?.length) errors[field] = messages;
 	}
+
 	return { message: parsed.data.error.message, errors };
 }

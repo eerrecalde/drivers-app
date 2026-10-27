@@ -8,6 +8,7 @@ export const actions: Actions = {
 	default: async ({ request, fetch }) => {
 		const values = readValues(await request.formData());
 		const validation = validate(values);
+
 		if (!validation.success) {
 			return fail(422, {
 				values,
@@ -15,6 +16,7 @@ export const actions: Actions = {
 				message: 'Please correct the errors below.'
 			});
 		}
+
 		const config = { baseUrl: API_BASE_URL, username: API_USERNAME, password: API_PASSWORD };
 		let validUrl = false;
 		try {
@@ -22,6 +24,7 @@ export const actions: Actions = {
 		} catch {
 			// Invalid or missing URL is reported below without printing its value.
 		}
+
 		if (!config.username || !config.password || !validUrl) {
 			console.error('Driver creation failed: API configuration is missing or invalid.');
 			return fail(500, {
@@ -30,6 +33,7 @@ export const actions: Actions = {
 				message: 'The driver could not be created. Please try again.'
 			});
 		}
+
 		try {
 			const response = await createDriver(fetch, config, validation.data);
 			if (response.ok) return { success: true };
@@ -46,6 +50,7 @@ export const actions: Actions = {
 		} catch {
 			console.error('Driver creation failed: the API request failed before receiving a response.');
 		}
+
 		return fail(500, {
 			values,
 			errors: {} as FieldErrors,
