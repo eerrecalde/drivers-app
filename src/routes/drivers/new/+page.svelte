@@ -23,6 +23,7 @@
 
 <form
 	method="POST"
+	novalidate
 	use:enhance={() => {
 		pending = true;
 		return async ({ update }) => {
