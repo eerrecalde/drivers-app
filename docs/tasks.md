@@ -25,6 +25,9 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
   - Show policies or confirmed empty results only after completion. Handle network failures and non-JSON 5xx responses.
   - Retry at the same URL, preserving visible drivers, page and scroll. Refetching drivers is acceptable.
   - Test policy pagination/failures; manually verify delayed success, failure and retry using API simulation.
+- [x] **4.b. Default to the driver list** — `feature/default-drivers`.
+  - Remove the Svelte starter page and example files; redirect `/` to `/drivers`.
+  - Tests, lint, type checking and build passed. Browser checks confirmed the redirect with JavaScript enabled and disabled. Approximately 2 minutes.
 - [ ] **5. Accessible creation form** — `feature/driver-creation`, after task 4.
   - Build `/drivers/new` with a form action, server-side Zod validation and `use:enhance` pending feedback.
   - Associate labels/errors, preserve keyboard access and announce results. Retain values on failures, including 422/409.
@@ -38,6 +41,8 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
 ## Handoff notes
 
 Task 4 completed on `feature/policy-loading` (approximately 4 minutes of implementation and verification). Format/lint, type checking, tests and build passed; Svelte autofixer reported no issues or suggestions. A local simulated API and browser check verified drivers appear before delayed policies, a non-JSON failure, retry at the same URL with drivers and scroll preserved, and successful policy and empty results. Unit tests cover batched IDs, all pages, empty lists and failures. The simulation does not replace live-service or broader accessibility testing.
+
+Task 4.b completed on `feature/default-drivers`: the starter page and examples were removed, and `/` redirects to `/drivers`. See the verification results above.
 
 Next: **task 5**, accessible creation form.
 
