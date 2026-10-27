@@ -32,22 +32,13 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
   - Build `/drivers/new` with a form action, server-side Zod validation and `use:enhance` pending feedback.
   - Associate labels/errors, preserve keyboard access and announce results. Retain values on failures, including 422/409.
   - On success, stay on the form, confirm creation and clear fields. “View drivers” loads fresh list data.
-  - Add validation/action unit tests; manually verify success and failure with JavaScript enabled and disabled.
+  - Added validation/action tests and verified success, inline errors, retained values and pending feedback with JavaScript enabled and disabled. Screen-reader testing remains follow-up work. Approximately 19 minutes across implementation and validation follow-up.
 - [x] **6. Final documentation and minimal styling** — `docs/final-polish`.
   - Keep README brief: setup, commands, AI use and a decisions link. Update actual gaps and follow-up work.
   - Run format, lint, type, unit and build checks; manually verify the combined flows.
   - Spend at most 2–5 minutes on general styling if time remains. Capture the final UI for review.
   - Format, lint, type checking, 11 unit tests and build passed. Browser checks with a simulated API covered policy failure/retry, pagination, validation, creation and fresh list data, including JavaScript-disabled submissions and conflict value retention. Desktop and mobile form layouts were inspected. Approximately 4 minutes.
   - Remaining: screen-reader and broader accessibility checks, automated end-to-end coverage and the other follow-ups in decisions.md.
-
-## Handoff notes
-
-Task 5 completed on `feature/driver-creation` (approximately 15 minutes across implementation and verification). Format/lint, type checking, nine unit tests and build passed. The Svelte documentation and autofixer were run; the autofixer reported no issues or suggestions. The production dependency audit reported no known vulnerabilities.
-
-Browser checks against a stateful simulated API verified keyboard order and visible focus, associated 422 field errors, 422/409 value retention, enhanced pending feedback, success with cleared fields, and the new driver in the fresh list with JavaScript enabled and disabled. The live API also created a temporary driver and returned it in the list. Status messages use a live region, but a screen reader was not tested; broader accessibility testing remains follow-up work.
-
-Task 5 follow-up: disabled browser validation popups so empty and malformed inputs receive inline server validation errors. Unit tests and browser checks cover all empty fields, malformed email, retained values and subsequent success with JavaScript enabled and disabled. The Svelte autofixer found no issues or suggestions. Approximately 4 additional minutes.
-
-Task 5 diagnostics follow-up: unexpected creation failures now log whether API configuration is invalid, the request failed before a response, or the API returned an unexpected status. Logs exclude configuration values, submitted data, response bodies and exception text. Unit tests cover the failure paths.
-
-All planned tasks are complete.
+- [x] **7. Source readability** — `codex/readability-cleanup`.
+  - Add spacing between related sections and minimal comments explaining non-obvious decisions. Ignore generated browser logs.
+  - Formatting, lint, type checks, 11 unit tests and build passed. The Svelte autofixer reported no issues or suggestions for both modified components.
