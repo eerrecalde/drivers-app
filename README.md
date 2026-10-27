@@ -14,4 +14,6 @@ Install dependencies with `pnpm install`. Copy `.env.example` to `.env` and fill
 - `pnpm test` — unit tests
 - `pnpm build` and `pnpm preview` — production build and local preview
 
-See [decisions, interpretations and follow-up work](docs/decisions.md). AI assistance was used to plan, implement, review and verify the app; the resulting code and decisions should be reviewed and understood by the author.
+See the [implementation plan](docs/plan.md) and [decisions, interpretations and follow-up work](docs/decisions.md).
+
+AI assistance was used to plan, implement, review and verify the app; the resulting code and decisions should be reviewed and understood by the author.
