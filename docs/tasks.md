@@ -37,6 +37,6 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`. Feature i
 
 ## Handoff notes
 
-Task 3 is in progress on `feature/driver-listing` (approximately 5 minutes). The list, pagination, server-only API authentication and unit tests are implemented. Format/lint, type checking, tests and build pass; a local mock verified shared URLs, Back/Forward, invalid/empty pages and navigation without JavaScript. Live API verification still needs the base URL and credentials in `.env`. The Svelte MCP server and its autofixer were unavailable in this session; run the autofixer when available before completing this task. Review, merge and push remain pending.
+Task 3 is in progress on `feature/driver-listing` (approximately 5 minutes). The list, pagination, server-only API authentication and unit tests are implemented. Format/lint, type checking, tests and build pass; a local mock verified shared URLs, Back/Forward, invalid/empty pages and navigation without JavaScript. Live API verification passed with credentials in `.env`: the list rendered, pagination and browser history worked, and direct URLs and pagination worked without JavaScript. The Svelte MCP server and its autofixer were unavailable in this session; run the autofixer when available before completing this task. Review, merge and push remain pending.
 
 After each task, tick it off and replace these notes with checks/results, time spent and the next task or blocker. Use `git log` for commit references. Leave unfinished work unchecked when the timebox ends.
