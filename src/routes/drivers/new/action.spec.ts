@@ -1,12 +1,30 @@
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { validate } from '../../../lib/server/create-driver';
 import { actions } from './+page.server';
 
-vi.mock('$app/env/private', () => ({
-	API_BASE_URL: 'https://example.test',
-	API_USERNAME: 'user',
-	API_PASSWORD: 'pass'
+const config = vi.hoisted(() => ({
+	url: 'https://example.test',
+	username: 'user',
+	password: 'pass'
 }));
+vi.mock('$app/env/private', () => ({
+	get API_BASE_URL() {
+		return config.url;
+	},
+	get API_USERNAME() {
+		return config.username;
+	},
+	get API_PASSWORD() {
+		return config.password;
+	}
+}));
+
+afterEach(() => {
+	config.url = 'https://example.test';
+	config.username = 'user';
+	config.password = 'pass';
+	vi.restoreAllMocks();
+});
 
 const values = {
 	firstName: ' Sam ',
@@ -87,6 +105,7 @@ describe('driver creation', () => {
 	});
 
 	it('handles duplicate, non-JSON, network and success responses', async () => {
+		const log = vi.spyOn(console, 'error').mockImplementation(() => {});
 		const duplicate = await submit(
 			new Response(JSON.stringify({ error: { message: 'Already exists' } }), { status: 409 })
 		);
@@ -94,15 +113,38 @@ describe('driver creation', () => {
 			status: 409,
 			data: { values, message: 'Already exists' }
 		});
-		for (const response of [new Response('oops', { status: 503 }), new Error('offline')]) {
+		for (const response of [
+			new Response('oops', { status: 503 }),
+			new Error('private URL, password and driver details')
+		]) {
 			const { result } = await submit(response);
 			expect(result).toMatchObject({ status: 500, data: { values } });
 		}
+		expect(log.mock.calls).toEqual([
+			['Driver creation failed: API responded with status 503.'],
+			['Driver creation failed: the API request failed before receiving a response.']
+		]);
 		const success = await submit(new Response('{}'));
 		expect(success.result).toEqual({ success: true });
 		expect(JSON.parse(success.fetch.mock.calls[0][1].body)).toMatchObject({
 			firstName: 'Sam',
 			licenceNumber: 'ABCD1234EFGH5678'
 		});
+	});
+	it('logs invalid configuration without sending a request or revealing its values', async () => {
+		const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+		for (const url of ['', 'not-a-url', 'file:///secret']) {
+			config.url = url;
+			const { result, fetch } = await submit(new Response('{}'));
+			expect(fetch).not.toHaveBeenCalled();
+			expect(result).toMatchObject({ status: 500, data: { values } });
+		}
+		config.url = 'https://example.test';
+		config.password = '';
+		const missing = await submit(new Response('{}'));
+		expect(missing.fetch).not.toHaveBeenCalled();
+		expect(log).toHaveBeenCalledTimes(4);
+		for (const call of log.mock.calls)
+			expect(call).toEqual(['Driver creation failed: API configuration is missing or invalid.']);
 	});
 });

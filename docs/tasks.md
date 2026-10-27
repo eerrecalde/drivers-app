@@ -46,4 +46,6 @@ Browser checks against a stateful simulated API verified keyboard order and visi
 
 Task 5 follow-up: disabled browser validation popups so empty and malformed inputs receive inline server validation errors. Unit tests and browser checks cover all empty fields, malformed email, retained values and subsequent success with JavaScript enabled and disabled. The Svelte autofixer found no issues or suggestions. Approximately 4 additional minutes.
 
+Task 5 diagnostics follow-up: unexpected creation failures now log whether API configuration is invalid, the request failed before a response, or the API returned an unexpected status. Logs exclude configuration values, submitted data, response bodies and exception text. Unit tests cover the failure paths.
+
 Next: **task 6**, final documentation and minimal styling.
