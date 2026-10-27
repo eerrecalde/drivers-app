@@ -17,6 +17,8 @@
 
 You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
 
+If the Svelte MCP tools are not exposed in the current session, check whether the official `@sveltejs/mcp` server is installed locally and can be run over stdio. It may need network access to start. Before sending project source to an external service, obtain explicit user authorization for the files and destination; approval to run the server alone does not necessarily cover sharing source. If a required check remains blocked, follow the verification-before-commits instructions above.
+
 ## Available Svelte MCP Tools:
 
 ### 1. list-sections
