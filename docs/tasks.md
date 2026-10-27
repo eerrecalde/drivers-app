@@ -20,7 +20,7 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
   - Server-render `/drivers`; keep Basic-auth credentials server-only. Add `.env.example` with placeholders.
   - Use `?page=`, 10 drivers per page and ordinary pagination links. Handle empty results, invalid page input and driver-fetch errors.
   - Verify shared URLs, Back/Forward and pagination without JavaScript; add relevant unit tests.
-- [ ] **4. Policy loading and retry** — `feature/policy-loading`, after task 3.
+- [x] **4. Policy loading and retry** — `feature/policy-loading`, after task 3.
   - Render drivers before policies finish. Batch visible driver IDs and automatically fetch every policy page; skip empty driver lists.
   - Show policies or confirmed empty results only after completion. Handle network failures and non-JSON 5xx responses.
   - Retry at the same URL, preserving visible drivers, page and scroll. Refetching drivers is acceptable.
@@ -37,8 +37,8 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
 
 ## Handoff notes
 
-Task 3 completed on `feature/driver-listing` (approximately 5 minutes of implementation, plus later verification and review). Format/lint, type checking, tests and build passed. The Svelte autofixer reported no issues or suggestions. Live API and local mock checks covered rendering, shared URLs, Back/Forward and pagination without JavaScript; invalid and empty pages, and driver-fetch failure and retry, were also checked. The list is intentionally unstyled and policy loading is next.
+Task 4 completed on `feature/policy-loading` (approximately 4 minutes of implementation and verification). Format/lint, type checking, tests and build passed; Svelte autofixer reported no issues or suggestions. A local simulated API and browser check verified drivers appear before delayed policies, a non-JSON failure, retry at the same URL with drivers and scroll preserved, and successful policy and empty results. Unit tests cover batched IDs, all pages, empty lists and failures. The simulation does not replace live-service or broader accessibility testing.
 
-Next: **task 4**, policy loading and retry.
+Next: **task 5**, accessible creation form.
 
 After each task, tick it off and replace these notes with checks/results, time spent and the next task or blocker. Use `git log` for commit references. Leave unfinished work unchecked when the timebox ends.
