@@ -6,7 +6,7 @@ Plan only; implementation and verification are pending. Keep documentation brief
 
 - **Scope:** SvelteKit, Svelte 5, TypeScript and pnpm; about two hours. Prioritise readable code and required behaviour. Use small commits.
 - **Git workflow:** One branch per remaining task, starting from updated `main`. Review and verify before merging with `--no-ff` to preserve task boundaries; push the branch and updated `main`. Keep the existing setup history.
-- **Validation:** Zod in the server action, with native browser constraints. Map API field errors to inputs and other failures to the form; preserve values on failure.
+- **Validation:** Zod in the server action, with inline field errors in both JavaScript modes. Keep required field semantics but use `novalidate` so browser popups do not prevent the server from returning errors. Map API field errors to inputs and other failures to the form; preserve values on failure.
 - **Form:** `/drivers/new`, using HTML POST and `use:enhance`. Works without JavaScript; enhancement adds pending feedback and submission without a document reload.
 - **Success:** Stay on the form, show confirmation and clear fields for another entry. Provide a “View drivers” link.
 - **List freshness:** Visiting `/drivers` fetches current data. Created drivers retain the API's alphabetical position and expire after five minutes. Manual refresh is unnecessary.

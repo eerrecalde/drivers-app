@@ -12,23 +12,25 @@ export function readValues(form: FormData): Values {
 }
 
 export function validate(values: Values, today = new Date()) {
-	const date = z.iso.date().refine((value) => {
-		const [year, month, day] = value.split('-').map(Number);
-		const born = new Date(Date.UTC(year, month - 1, day));
-		if (
-			born.getUTCFullYear() !== year ||
-			born.getUTCMonth() !== month - 1 ||
-			born.getUTCDate() !== day
-		)
-			return false;
-		let age = today.getUTCFullYear() - year;
-		if (
-			today.getUTCMonth() + 1 < month ||
-			(today.getUTCMonth() + 1 === month && today.getUTCDate() < day)
-		)
-			age--;
-		return age >= 17 && age <= 100;
-	}, 'Driver must be between 17 and 100 years old');
+	const date = z.iso.date('Enter a valid date of birth').pipe(
+		z.string().refine((value) => {
+			const [year, month, day] = value.split('-').map(Number);
+			const born = new Date(Date.UTC(year, month - 1, day));
+			if (
+				born.getUTCFullYear() !== year ||
+				born.getUTCMonth() !== month - 1 ||
+				born.getUTCDate() !== day
+			)
+				return false;
+			let age = today.getUTCFullYear() - year;
+			if (
+				today.getUTCMonth() + 1 < month ||
+				(today.getUTCMonth() + 1 === month && today.getUTCDate() < day)
+			)
+				age--;
+			return age >= 17 && age <= 100;
+		}, 'Driver must be between 17 and 100 years old')
+	);
 	const schema = z.object({
 		firstName: z.string().trim().min(1, 'Enter a first name').max(50, 'Use at most 50 characters'),
 		lastName: z.string().trim().min(1, 'Enter a last name').max(50, 'Use at most 50 characters'),

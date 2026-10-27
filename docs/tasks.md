@@ -44,4 +44,6 @@ Task 5 completed on `feature/driver-creation` (approximately 15 minutes across i
 
 Browser checks against a stateful simulated API verified keyboard order and visible focus, associated 422 field errors, 422/409 value retention, enhanced pending feedback, success with cleared fields, and the new driver in the fresh list with JavaScript enabled and disabled. The live API also created a temporary driver and returned it in the list. Status messages use a live region, but a screen reader was not tested; broader accessibility testing remains follow-up work.
 
+Task 5 follow-up: disabled browser validation popups so empty and malformed inputs receive inline server validation errors. Unit tests and browser checks cover all empty fields, malformed email, retained values and subsequent success with JavaScript enabled and disabled. The Svelte autofixer found no issues or suggestions. Approximately 4 additional minutes.
+
 Next: **task 6**, final documentation and minimal styling.

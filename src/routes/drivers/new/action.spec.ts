@@ -67,6 +67,25 @@ describe('driver creation', () => {
 		});
 	});
 
+	it('returns errors for every empty field without calling the API', async () => {
+		const empty = { firstName: '', lastName: '', email: '', dateOfBirth: '', licenceNumber: '' };
+		const { result, fetch } = await submit(new Response(), empty);
+		expect(fetch).not.toHaveBeenCalled();
+		expect(result).toMatchObject({
+			status: 422,
+			data: {
+				values: empty,
+				errors: {
+					firstName: expect.any(Array),
+					lastName: expect.any(Array),
+					email: expect.any(Array),
+					dateOfBirth: ['Enter a valid date of birth'],
+					licenceNumber: expect.any(Array)
+				}
+			}
+		});
+	});
+
 	it('handles duplicate, non-JSON, network and success responses', async () => {
 		const duplicate = await submit(
 			new Response(JSON.stringify({ error: { message: 'Already exists' } }), { status: 409 })
