@@ -11,7 +11,6 @@ Plan only; implementation and verification are pending. Keep documentation brief
 - **List freshness:** Visiting `/drivers` fetches current data. Created drivers retain the API's alphabetical position and expire after five minutes. Manual refresh is unnecessary.
 - **Accessibility:** Include labels, associated errors, keyboard access, visible focus and accessible status feedback from the start.
 - **Without JavaScript:** The form must work fully. Policies may require JavaScript; the brief's explicit no-JavaScript requirement applies to Task 2.
-
 - **Pagination:** `/drivers?page=2`, 10 drivers per page, ordinary Previous/Next links. Defer search.
 - **Loading:** Await drivers in server load; stream policies separately so they never block the initial driver display. Keep Basic-auth credentials server-only in environment variables.
 - **Retry:** Show one policy error and Retry button. Rerun the page load at the same URL, preserving visible drivers, pagination and scroll while loading. This also refetches drivers, avoiding a separate retry endpoint. Driver-fetch failures get a page-level error and retry.
@@ -19,16 +18,7 @@ Plan only; implementation and verification are pending. Keep documentation brief
 - **Dependencies:** Add only Zod. Keep existing formatting, linting and test tools.
 - **README:** Setup, commands, brief AI-use disclosure and a link here for decisions, interpretations and gaps.
 
-## Commit sequence
-
-1. Connect the existing GitHub repository using `gh`; commit the untouched scaffold.
-2. Record the agreed plan and decisions.
-3. Add driver listing and URL pagination.
-4. Add policy loading, failure handling and retry.
-5. Add accessible creation form and validation.
-6. Finish documentation and a minimal style reset if time allows.
-
-Include relevant unit tests with each feature. Reserve time for checks and manual verification; stop at the timebox and record unfinished work.
+Task order, completion status and chat handoffs live in [tasks.md](tasks.md). Include relevant unit tests with each feature and stop at the timebox.
 
 ## Verification
 
