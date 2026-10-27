@@ -13,6 +13,7 @@
 
 <svelte:head><title>Drivers</title></svelte:head>
 <h1>Drivers</h1>
+<a href={resolve('/drivers/new')}>Add a driver</a>
 
 {#if data.kind === 'invalid'}
 	<p>Please provide a valid page number.</p>

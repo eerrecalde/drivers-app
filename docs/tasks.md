@@ -28,7 +28,7 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
 - [x] **4.b. Default to the driver list** — `feature/default-drivers`.
   - Remove the Svelte starter page and example files; redirect `/` to `/drivers`.
   - Tests, lint, type checking and build passed. Browser checks confirmed the redirect with JavaScript enabled and disabled. Approximately 2 minutes.
-- [ ] **5. Accessible creation form** — `feature/driver-creation`, after task 4.
+- [x] **5. Accessible creation form** — `feature/driver-creation`, after task 4.
   - Build `/drivers/new` with a form action, server-side Zod validation and `use:enhance` pending feedback.
   - Associate labels/errors, preserve keyboard access and announce results. Retain values on failures, including 422/409.
   - On success, stay on the form, confirm creation and clear fields. “View drivers” loads fresh list data.
@@ -40,10 +40,8 @@ Setup commits are pushed to `origin/main` at `eerrecalde/drivers-app`; setup tim
 
 ## Handoff notes
 
-Task 4 completed on `feature/policy-loading` (approximately 4 minutes of implementation and verification). Format/lint, type checking, tests and build passed; Svelte autofixer reported no issues or suggestions. A local simulated API and browser check verified drivers appear before delayed policies, a non-JSON failure, retry at the same URL with drivers and scroll preserved, and successful policy and empty results. Unit tests cover batched IDs, all pages, empty lists and failures. The simulation does not replace live-service or broader accessibility testing.
+Task 5 completed on `feature/driver-creation` (approximately 15 minutes across implementation and verification). Format/lint, type checking, nine unit tests and build passed. The Svelte documentation and autofixer were run; the autofixer reported no issues or suggestions. The production dependency audit reported no known vulnerabilities.
 
-Task 4.b completed on `feature/default-drivers`: the starter page and examples were removed, and `/` redirects to `/drivers`. See the verification results above.
+Browser checks against a stateful simulated API verified keyboard order and visible focus, associated 422 field errors, 422/409 value retention, enhanced pending feedback, success with cleared fields, and the new driver in the fresh list with JavaScript enabled and disabled. The live API also created a temporary driver and returned it in the list. Status messages use a live region, but a screen reader was not tested; broader accessibility testing remains follow-up work.
 
-Next: **task 5**, accessible creation form.
-
-After each task, tick it off and replace these notes with checks/results, time spent and the next task or blocker. Use `git log` for commit references. Leave unfinished work unchecked when the timebox ends.
+Next: **task 6**, final documentation and minimal styling.
