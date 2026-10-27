@@ -6,6 +6,15 @@
 
 ---
 
+## Verification before commits
+
+- Do not rush to commit. First understand the change, its requirements and the purpose of every required check or tool.
+- Before committing, verify the relevant behaviour and complete the required checks. Investigate failures, unexpected results and missing tools; do not treat an unrun check as passed or assume another check is equivalent.
+- If a required check cannot be completed, leave the work uncommitted and explain the blocker and what remains to be verified. Discuss any proposed exception with the user before committing.
+- Report the evidence and any remaining uncertainty accurately. Do not claim absolute certainty from tests alone.
+
+---
+
 You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
 
 ## Available Svelte MCP Tools:
